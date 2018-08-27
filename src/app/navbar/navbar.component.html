@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button  type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                            </button>
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span> 
+                                  </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                              <ul class="nav navbar-nav navbar-right">
+                                <li *ngIf="!loginService.loggedIn()" ><a  routerLink="/">Home</a></li>
+                                <li *ngIf="!loginService.loggedIn()"  ><a routerLink="/login"><span class="glyphicon glyphicon-user"></span>&nbsp;Login</a></li> 
+                                <li *ngIf="loginService.loggedIn()" (click)="onLogout()" ><a style="cursor: pointer;">&nbsp;Logout</a></li> 
+
+                                <li *ngIf="!loginService.loggedIn()" ><a routerLink="/register"><span class="glyphicon glyphicon-log-in"></span>&nbsp; Register</a></li> 
+                              </ul>
+                            </div>
+
+                       
+                    </div>
+                </nav>
+
+                <p><br></p>
+                 <p><br></p>
+                <!-- <p><br></p> -->

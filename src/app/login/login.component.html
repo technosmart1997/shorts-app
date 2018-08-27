@@ -1,0 +1,77 @@
+  <!-- Top content -->
+  <div class="top-content">
+        	
+      <div class="inner-bg">
+          <div class="container">
+              <div class="row">
+                <div class="col-md-12" >
+
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3 form-box">
+                     <!-- Code for Alerts Will Go Here -->
+                      
+                    <div class="alert alert-success alert-dismissible text-center" *ngIf="successmessageBox">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Success!</strong> {{ diplayMessage }}
+                      </div>
+                      <div class="alert alert-danger alert-dismissible text-center"  *ngIf="dangermessageBox">
+                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                          <strong>Sorry!</strong> {{ diplayMessage }}
+                        </div>
+
+                     <!-- Alert Box Ends -->
+                    <div class="form-top">
+                      <div class="form-top-left">
+                        <h3>Please Login Here</h3>
+                          <h5>Enter your username and password to log on:</h5>
+                      </div>
+                      <div class="form-top-right">
+                        <i class="fa fa-key"></i>
+                      </div>
+                      </div>
+                      <div class="form-bottom">
+                        <form [formGroup]="loginForm" (submit)="onLogin()" class="login-form">
+                          <div class="form-group"  [ngClass]="{'has-error' : ((loginForm.get('username').dirty || loginForm.get('username').touched) && loginForm.get('username').invalid), 'has-success' : (!loginForm.get('username').errors)}">
+                            <label class="sr-only" for="username">Username</label>
+                              <input type="text"  formControlName="username"  name="username" placeholder="Username..." class="form-username form-control" id="username">
+
+                              <ul>
+                                  <li *ngIf="loginForm.get('username').errors?.required && loginForm.get('username').touched">Username is Required</li>
+                                  <li *ngIf="loginForm.get('username').errors?.minlength " >Username must be 8 characters long</li>
+                              </ul>
+                            </div>
+                            <div class="form-group" [ngClass]="{'has-error' : ((loginForm.get('password').dirty || loginForm.get('password').touched) && loginForm.get('password').invalid), 'has-success' : (!loginForm.get('password').errors)}">
+                              <label class="sr-only" for="password">Password</label>
+                              <input type="password"  formControlName="password"  name="password" placeholder="Password..." class="form-password form-control" id="password">
+                           
+                              <ul>
+                                  <li *ngIf="loginForm.get('password').errors?.required && loginForm.get('password').touched">Password is Required</li>
+                                  <!-- <li *ngIf="loginForm.get('username').errors?.minlength " >Username must be 8 characters long</li> -->
+                              </ul>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" formControlName="tc" name="tc" value="1">Terms And Conditions
+                                </label>
+                            </div>
+            
+                            <div *ngIf="!loginForm.get('tc').value">Accept T&C</div>
+                            <button type="submit" [disabled]="loginForm.invalid || !loginForm.controls.tc.value" class="btn">Sign in!</button>
+                        </form>
+                  </div>
+                  </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <span style="color:white">Not A Member?</span>&nbsp;&nbsp;<a routerLink="/register">Register Here</a>
+                </div>
+              </div>
+             
+          </div>
+      </div>
+      
+  </div>

@@ -1,0 +1,47 @@
+<div id="sidebar-container">
+    <div class="sidebar-header">
+         <h3 class="text-center">Welcome, {{displayname}}</h3>{{ newimageurl }}
+       <br>
+            <div class="row text-center">
+                 <div style="cursor: pointer;" (click)="openModal()" data-target="#myModal" data-toggle="modal" class="col-md-12 col-lg-12 col-sm-12 col-xs-1">
+                        <img id="image" *ngIf="image_src" class="responsive img-circle" [src]="userService.getImageUrl()">
+                 </div> 
+                <!-- <div class="col-md-12">
+                    
+                </div> -->
+                
+            </div>                
+    </div>
+
+                <ul class="list-unstyled components">
+                    <li routerLinkActive="active">
+                        <a  style="cursor: pointer;">Dashboard</a>
+                    </li>
+                    <li  routerLinkActive="active">
+                        <a  routerLink="/dashboard/newsportal">News Portal</a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="/dashboard/about">About</a>
+                    </li>
+                    <li routerLinkActive="active">
+                         <a routerLink="/dashboard/profile">Profile</a> 
+                    </li>
+                    <li routerLinkActive="active" (click)="onLogout()">
+                            <a >Logout</a> 
+                    </li>
+                </ul>
+
+                <br><br>
+
+                <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+                <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                    Upload with ng-2 file uploader
+              </button>
+
+              <br>
+              <img [src]="sanitizer.bypassSecurityTrustUrl(localImageUrl)" />
+
+
+              
+</div>
